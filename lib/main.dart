@@ -41,17 +41,40 @@ class _HomePageState extends State<HomePage> {
               bottomLeft: Radius.circular(25)),
         ),
         elevation: 15,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.manage_accounts),
-            onPressed: () {},
-          ),
-        ],
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          tooltip: 'Back',
+          onPressed: () {},
+        ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: 'Shopp list',
+            backgroundColor: Color.fromARGB(255, 179, 74, 126),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.production_quantity_limits),
+            label: 'Promocje',
+            backgroundColor: Color.fromARGB(255, 179, 74, 126),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_shopping_cart),
+            label: 'Podziel się promocją!',
+            backgroundColor: Color.fromARGB(255, 179, 74, 126),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.manage_accounts),
+            label: 'Accounts',
+            backgroundColor: Color.fromARGB(255, 179, 74, 126),
+          ),
+        ],
       ),
     );
   }
