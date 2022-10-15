@@ -52,29 +52,50 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Shopp list',
-            backgroundColor: Color.fromARGB(255, 179, 74, 126),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: const Color.fromARGB(255, 179, 74, 126),
+          onPressed: () {},
+          child: const Icon(
+            Icons.add,
+            color: Colors.black,
+          )),
+      bottomNavigationBar: BottomAppBar(
+        color: const Color.fromARGB(255, 179, 74, 126),
+        shape: const CircularNotchedRectangle(),
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.shopping_cart,
+              size: 30,
+            ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.production_quantity_limits),
-            label: 'Promocje',
-            backgroundColor: Color.fromARGB(255, 179, 74, 126),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.production_quantity_limits,
+              size: 30,
+            ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_shopping_cart),
-            label: 'Podziel się promocją!',
-            backgroundColor: Color.fromARGB(255, 179, 74, 126),
+          const SizedBox(
+            width: 15,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.manage_accounts),
-            label: 'Accounts',
-            backgroundColor: Color.fromARGB(255, 179, 74, 126),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.add_shopping_cart,
+              size: 30,
+            ),
           ),
-        ],
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.manage_accounts,
+              size: 30,
+            ),
+          ),
+        ]),
       ),
     );
   }
