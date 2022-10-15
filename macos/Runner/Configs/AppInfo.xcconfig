@@ -8,7 +8,7 @@
 PRODUCT_NAME = my_shopping_list
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.myShoppingList
+PRODUCT_BUNDLE_IDENTIFIER = com.patryklaskowski.myShoppingList
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2022 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2022 com.patryklaskowski. All rights reserved.
