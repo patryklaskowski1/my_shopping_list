@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
         shape: const CircularNotchedRectangle(),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
           IconButton(
-            tooltip: 'My shop list',
+            tooltip: 'My shopping list',
             splashColor: Colors.pink,
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute(
@@ -63,6 +63,8 @@ class _HomePageState extends State<HomePage> {
           ),
           IconButton(
             onPressed: () {},
+            tooltip: 'Sale',
+            splashColor: Colors.pink,
             icon: const Icon(
               Icons.production_quantity_limits,
               size: 30,
@@ -73,6 +75,8 @@ class _HomePageState extends State<HomePage> {
           ),
           IconButton(
             onPressed: () {},
+            tooltip: 'Add Sale',
+            splashColor: Colors.pink,
             icon: const Icon(
               Icons.add_shopping_cart,
               size: 30,
@@ -80,6 +84,8 @@ class _HomePageState extends State<HomePage> {
           ),
           IconButton(
             onPressed: () {},
+            tooltip: 'Account',
+            splashColor: Colors.pink,
             icon: const Icon(
               Icons.manage_accounts,
               size: 30,
