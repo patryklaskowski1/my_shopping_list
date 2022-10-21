@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_shopping_list/app/features/add/add_page_list.dart';
+import 'package:my_shopping_list/app/features/models/conteiner_table_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -29,6 +30,17 @@ class _HomePageState extends State<HomePage> {
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    ConteinerTableModel('Product'),
+                    ConteinerTableModel('Category'),
+                    ConteinerTableModel('Shop Name'),
+                    ConteinerTableModel('City'),
+                  ],
+                ),
+              ],
             ),
           ),
         ],
