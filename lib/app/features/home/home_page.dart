@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_shopping_list/app/features/add/add_page_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -22,11 +23,6 @@ class _HomePageState extends State<HomePage> {
               bottomLeft: Radius.circular(25)),
         ),
         elevation: 15,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          tooltip: 'Back',
-          onPressed: () {},
-        ),
       ),
       body: Center(
         child: Column(
@@ -36,7 +32,11 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
           backgroundColor: const Color.fromARGB(255, 179, 74, 126),
-          onPressed: () {},
+          onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => AddPageList(title: widget.title),
+                ),
+              ),
           child: const Icon(
             Icons.add,
             color: Colors.black,
@@ -46,10 +46,19 @@ class _HomePageState extends State<HomePage> {
         shape: const CircularNotchedRectangle(),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
           IconButton(
-            onPressed: () {},
+            tooltip: 'My shop list',
+            splashColor: Colors.pink,
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => HomePage(
+                  title: widget.title,
+                ),
+              ),
+            ),
             icon: const Icon(
               Icons.shopping_cart,
               size: 30,
+              color: Colors.white,
             ),
           ),
           IconButton(
