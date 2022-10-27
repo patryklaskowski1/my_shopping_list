@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_shopping_list/app/features/home/home_page.dart';
 
 class AddPageList extends StatefulWidget {
   const AddPageList({Key? key, required this.title}) : super(key: key);
@@ -36,8 +35,8 @@ class _AddPageListState extends State<AddPageList> {
           padding: const EdgeInsets.all(25.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              TextField(
+            children: [
+              const TextField(
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -48,42 +47,55 @@ class _AddPageListState extends State<AddPageList> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              TextField(
+              const TextField(
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Category',
+                  hintText: 'Fruit/Vegetables/Chemistry',
                   label: Text('Category'),
+                  prefixIcon: Icon(
+                    Icons.category,
+                  ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              TextField(
+              const TextField(
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Shop Name',
+                  hintText: 'np.Biedronka',
                   label: Text('Shop Name'),
                   prefixIcon: Icon(
                     Icons.add_location,
                   ),
                 ),
               ),
-              SizedBox(
-                height: 15,
+              const SizedBox(
+                height: 65,
               ),
-              TextField(
-                textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'City',
-                  label: Text('City'),
-                  prefixIcon: Icon(
-                    Icons.location_city,
+              ElevatedButton(
+                onPressed: () {},
+                child: Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Text(
+                    'Add',
+                    style: const TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: const Color.fromARGB(255, 179, 74, 126),
+                  onPrimary: Colors.white,
+                  shape: const BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
                   ),
                 ),
               ),
