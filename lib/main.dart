@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:my_shopping_list/app/features/account/account_page.dart';
+import 'package:my_shopping_list/app/features/login/login_page.dart';
 import 'firebase_options.dart';
-import 'package:my_shopping_list/app/features/home/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +21,29 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(title: 'My shopping list'),
+      home: const RootPage(),
     );
+  }
+}
+
+class RootPage extends StatelessWidget {
+  const RootPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          final user = snapshot.data;
+          if (user == null) {
+            return const LoginPage();
+          }
+
+          return AccountPage(
+            user: user,
+          );
+        });
   }
 }
