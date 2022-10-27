@@ -80,11 +80,11 @@ class _AddPageListState extends State<AddPageList> {
               ),
               ElevatedButton(
                 onPressed: () {},
-                child: Padding(
+                child: const Padding(
                   padding: EdgeInsets.all(15.0),
                   child: Text(
                     'Add',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
