@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:my_shopping_list/app/auth/pages/user_page.dart';
 import 'package:my_shopping_list/app/features/add/add_page_list.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const HomePage({
+    Key? key,
+    required title,
+  }) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -16,7 +19,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 179, 74, 126),
-        title: Text(widget.title),
+        title: const Text('My shoping list'),
         centerTitle: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -50,7 +53,9 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: const Color.fromARGB(255, 179, 74, 126),
           onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => AddPageList(title: widget.title),
+                  builder: (context) => const AddPageList(
+                    title: 'My shoping list',
+                  ),
                 ),
               ),
           child: const Icon(
@@ -66,8 +71,8 @@ class _HomePageState extends State<HomePage> {
             splashColor: Colors.pink,
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => HomePage(
-                  title: widget.title,
+                builder: (context) => const HomePage(
+                  title: 'My shoping list',
                 ),
               ),
             ),
@@ -99,7 +104,11 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const UserProfile(),
+              ),
+            ),
             tooltip: 'Account',
             splashColor: Colors.pink,
             icon: const Icon(
