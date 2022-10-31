@@ -8,6 +8,9 @@ class AddPageList extends StatefulWidget {
   State<AddPageList> createState() => _AddPageListState();
 }
 
+List<String> categorys = ['category1', 'category2', 'category3'];
+String? selectedCategorys = 'category1';
+
 class _AddPageListState extends State<AddPageList> {
   @override
   Widget build(BuildContext context) {
@@ -54,20 +57,6 @@ class _AddPageListState extends State<AddPageList> {
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Fruit/Vegetables/Chemistry',
-                  label: Text('Category'),
-                  prefixIcon: Icon(
-                    Icons.category,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              const TextField(
-                textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
                   hintText: 'np.Biedronka',
                   label: Text('Shop Name'),
                   prefixIcon: Icon(
@@ -76,25 +65,71 @@ class _AddPageListState extends State<AddPageList> {
                 ),
               ),
               const SizedBox(
-                height: 65,
+                height: 20,
               ),
-              ElevatedButton(
-                onPressed: () {},
-                child: const Padding(
-                  padding: EdgeInsets.all(15.0),
-                  child: Text(
-                    'Add',
-                    style: TextStyle(
-                      fontSize: 20,
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: SizedBox(
+                  width: 260,
+                  child: DropdownButtonFormField<String>(
+                    decoration: const InputDecoration(
+                      isCollapsed: true,
+                      enabledBorder: InputBorder.none,
+                    ),
+                    icon: const Icon(Icons.arrow_downward),
+                    elevation: 18,
+                    style: const TextStyle(
+                      color: Color.fromARGB(255, 97, 96, 96),
+                    ),
+                    iconSize: 32,
+                    iconEnabledColor: const Color.fromARGB(255, 179, 74, 126),
+                    value: selectedCategorys,
+                    items: categorys
+                        .map(
+                          (category) => DropdownMenuItem(
+                            value: category,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 85,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  category,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (category) => setState(
+                      () => selectedCategorys = category,
                     ),
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 85,
+              ),
+              ElevatedButton(
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   primary: const Color.fromARGB(255, 179, 74, 126),
                   onPrimary: Colors.white,
                   shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(20),
+                    ),
+                  ),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Text(
+                    'Add',
+                    style: TextStyle(
+                      fontSize: 20,
                     ),
                   ),
                 ),

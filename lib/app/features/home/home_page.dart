@@ -50,18 +50,19 @@ class _HomePageState extends State<HomePage> {
           }),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-          backgroundColor: const Color.fromARGB(255, 179, 74, 126),
-          onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const AddPageList(
-                    title: 'My shoping list',
-                  ),
-                ),
-              ),
-          child: const Icon(
-            Icons.add,
-            color: Colors.white,
-          )),
+        backgroundColor: const Color.fromARGB(255, 179, 74, 126),
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const AddPageList(
+              title: 'My shoping list',
+            ),
+          ),
+        ),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
       bottomNavigationBar: BottomAppBar(
         color: const Color.fromARGB(255, 179, 74, 126),
         shape: const CircularNotchedRectangle(),
