@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AddPageList extends StatefulWidget {
@@ -8,7 +9,8 @@ class AddPageList extends StatefulWidget {
   State<AddPageList> createState() => _AddPageListState();
 }
 
-List<String> categorys = ['category1', 'category2', 'category3'];
+List<String> categorys =
+    FirebaseFirestore.instance.collection('users').orderBy('shoppingList') as List<String>;
 String? selectedCategorys = 'category1';
 
 class _AddPageListState extends State<AddPageList> {
@@ -67,49 +69,63 @@ class _AddPageListState extends State<AddPageList> {
               const SizedBox(
                 height: 20,
               ),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: SizedBox(
-                  width: 260,
-                  child: DropdownButtonFormField<String>(
-                    decoration: const InputDecoration(
-                      isCollapsed: true,
-                      enabledBorder: InputBorder.none,
-                    ),
-                    icon: const Icon(Icons.arrow_downward),
-                    elevation: 18,
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 97, 96, 96),
-                    ),
-                    iconSize: 32,
-                    iconEnabledColor: const Color.fromARGB(255, 179, 74, 126),
-                    value: selectedCategorys,
-                    items: categorys
-                        .map(
-                          (category) => DropdownMenuItem(
-                            value: category,
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                left: 85,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  category,
-                                  style: const TextStyle(
-                                    fontSize: 18,
+              StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                  stream: FirebaseFirestore.instance
+                      .collection('users')
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return const Center(child: Text('Someting went wrong'));
+                    }
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: Text('Loading'));
+                    }
+                    final documents = snapshot.data!.docs;
+                    return Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: SizedBox(
+                        width: 260,
+                        child: DropdownButtonFormField<String>(
+                          decoration: const InputDecoration(
+                            isCollapsed: true,
+                            enabledBorder: InputBorder.none,
+                          ),
+                          icon: const Icon(Icons.arrow_downward),
+                          elevation: 18,
+                          style: const TextStyle(
+                            color: Color.fromARGB(255, 97, 96, 96),
+                          ),
+                          iconSize: 32,
+                          iconEnabledColor:
+                              const Color.fromARGB(255, 179, 74, 126),
+                          value: selectedCategorys,
+                          items: categorys
+                              .map(
+                                (category) => DropdownMenuItem(
+                                  value: category,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 85,
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        category,
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
+                              )
+                              .toList(),
+                          onChanged: (category) => setState(
+                            () => selectedCategorys = category,
                           ),
-                        )
-                        .toList(),
-                    onChanged: (category) => setState(
-                      () => selectedCategorys = category,
-                    ),
-                  ),
-                ),
-              ),
+                        ),
+                      ),
+                    );
+                  }),
               const SizedBox(
                 height: 85,
               ),
